@@ -1,8 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="texst/javascript">
+      var constrains = {
+        video: true
+      }, success = function() {
+        var video = document.querySelector('video');
+        video.src = window.URL.createObjectURL(localMediaStream);
+        video.onloadedmetadata = function(e) {
+          alert(e);
+        };
+      }, error = function() {
+        alert("Suit yourself.");
+      };
+      if (navigator.getUserMedia) {
+        naviagator.getUserMedia(constraints, success, error);
+      } else {
+        alert("Your browser is unsupported!");
+      }
+    </script>
   </head>
   <body>
-    <input type="file" id="take-picture" accept="image/*">
+    <video height="480" width="360" autoplay="true"></video>
   </body>
 </html>
